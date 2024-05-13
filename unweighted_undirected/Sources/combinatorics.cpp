@@ -152,18 +152,21 @@ double log_combination (int n, int k) {
 
 double binomial(int n, int x, double p) {		//	returns the binomial distribution, n trials, x successes, p probability
 
-	if (p==0)
-		if (x==0)
+	if (p==0) {
+		if (x==0) {
 			return 1;
-		else
+		} else {
 			return 0;
+		}
+	}
 	
-	if (p>=1)
-		if (x==n)
-			return 1;
-		else
+	if (p>=1) {
+		if (x==n) {
+			return 1;	
+		} else {
 			return 0;
-
+		}
+	}
 		
 	
 	
@@ -174,6 +177,7 @@ double binomial(int n, int x, double p) {		//	returns the binomial distribution,
 
 
 }
+
 
 
 //to draw a number:

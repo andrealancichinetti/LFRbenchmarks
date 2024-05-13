@@ -613,7 +613,7 @@ int not_norm_histogram (deque<type> &c, ostream & out, int number_of_bins, doubl
 
 }
 
-int int_histogram (vector <int> &c, ostream & out) {
+void int_histogram (vector <int> &c, ostream & out) {
 
 	
 	
@@ -624,10 +624,11 @@ int int_histogram (vector <int> &c, ostream & out) {
 	for (int i=0; i<c.size(); i++) {
 		
 		map<int, double>::iterator itf=hist.find(c[i]);
-		if (itf==hist.end())
+		if (itf==hist.end()) {
 			hist.insert(make_pair(c[i], 1.));
-		else
+		} else {
 			itf->second++;
+		}
 	
 	
 	}
@@ -642,10 +643,8 @@ int int_histogram (vector <int> &c, ostream & out) {
 
 }
 
-int int_histogram (deque <int> &c, ostream & out) {
+void int_histogram (deque <int> &c, ostream & out) {
 
-	
-	
 	map<int, double> hist;
 	
 	double freq=1/double(c.size());
@@ -653,22 +652,20 @@ int int_histogram (deque <int> &c, ostream & out) {
 	for (int i=0; i<c.size(); i++) {
 		
 		map<int, double>::iterator itf=hist.find(c[i]);
-		if (itf==hist.end())
+		if (itf==hist.end()) {
 			hist.insert(make_pair(c[i], 1.));
-		else
+		} else {
 			itf->second++;
-	
+		}
 	
 	}
 	
 	
-	for (map<int, double>::iterator it=hist.begin(); it!=hist.end(); it++)
+	for (map<int, double>::iterator it=hist.begin(); it!=hist.end(); it++) {
 		it->second=it->second*freq;
+	}
 	
 	prints(hist, out);
-
-
-
 }
 
 
