@@ -274,7 +274,7 @@ int xybinning(deque<type> &c, deque<type> &d, int number_of_bins, deque<double> 
 
 
 
-double compute_quantiles(double q, deque<double> & y, deque<double> & qs) {
+void compute_quantiles(double q, deque<double> & y, deque<double> & qs) {
 
 
 		int qv=cast_int((1-q)/2 * y.size());
@@ -1385,7 +1385,7 @@ void int_histogram (deque <int> &c, ostream & out) {
 
 }
 
-int int_histogram(int c, map<int, int> & hist) {
+void int_histogram(int c, map<int, int> & hist) {
 	
 	
 		
@@ -1400,25 +1400,18 @@ int int_histogram(int c, map<int, int> & hist) {
 }
 
 
-int int_histogram(int c, map<int, double> & hist, double w) {
-	
-	
-		
+void int_histogram(int c, map<int, double> & hist, double w) {	
 	map<int, double>::iterator itf=hist.find(c);
-	if (itf==hist.end())
+	if (itf==hist.end()) {
 		hist.insert(make_pair(c, w));
-	else
+	} else {
 		itf->second+=w;
-	
-	
-
+	}
 }
 
 
-int print_cumulative (deque<double> & kws, string file, int number_of_step) {
-		
-	
-	
+int print_cumulative(deque<double> & kws, string file, int number_of_step) {
+
 	char buffer [100];
 	cast_string_to_char(file, buffer);
 	
@@ -1428,17 +1421,11 @@ int print_cumulative (deque<double> & kws, string file, int number_of_step) {
 	int step=(kws.size()-1)/number_of_step;
 	step=max(step, 1);
 			
-	for (int i=0; i<kws.size(); i++) if(i%step==0)
+	for (int i=0; i<kws.size(); i++) if(i%step==0) {
 		expout<<kws[i]<<" "<<double(i+1)/(kws.size())<<endl;
-			
-			
-	
-			
-		
+	}
 
 	return 0;
-
-
 }
 
 int print_cumulative (deque<int> & kws, string file, int number_of_step) {
@@ -1524,7 +1511,7 @@ int print_cumulative (vector<int> & kws, string file, int number_of_step) {
 
 
 
-int int_histogram(string infile, string outfile) {
+void int_histogram(string infile, string outfile) {
 	
 	// this makes a int_histogram of integers from a file
 	

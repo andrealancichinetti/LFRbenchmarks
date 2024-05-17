@@ -215,7 +215,6 @@ double H_x_given_y(deque<deque<int> > &en, deque<deque<int> > &ten, int dim) {
 		// so, for each x you look for the best y.
 		
 		double H_x_y=0;
-		double H2=0;
 				
 		for (int j=0; j<int(en.size()); j++) {
 			
@@ -229,7 +228,6 @@ double H_x_given_y(deque<deque<int> > &en, deque<deque<int> > &ten, int dim) {
 			p.clear();
 			
 				
-			H2+=H2_;
 			
 			double diff=H2_;
 			
