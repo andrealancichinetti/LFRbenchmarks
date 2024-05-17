@@ -3,7 +3,7 @@
 	
 
 
-int cherr() {
+void cherr() {
 	
 	cerr<<"the check failed"<<endl;
 	int e;
@@ -12,7 +12,7 @@ int cherr() {
 }
 
 
-int cherr(double a) {
+void cherr(double a) {
 	
 	cerr<<"the check failed because of "<<a<<endl;
 	int e;

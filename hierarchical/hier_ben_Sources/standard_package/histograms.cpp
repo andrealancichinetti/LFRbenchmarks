@@ -1327,7 +1327,7 @@ int not_norm_histogram (deque<double> &c, deque<double> &c2, ostream & out, int 
 
 }
 
-int int_histogram (vector <int> &c, ostream & out) {
+void int_histogram (vector <int> &c, ostream & out) {
 
 	
 	
@@ -1356,7 +1356,7 @@ int int_histogram (vector <int> &c, ostream & out) {
 
 }
 
-int int_histogram (deque <int> &c, ostream & out) {
+void int_histogram (deque <int> &c, ostream & out) {
 
 	
 	
