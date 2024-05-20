@@ -2,8 +2,8 @@
 This program is an implementation of the algorithm described in the paper "Directed, weighted and overlapping benchmark graphs for community detection algorithms", written by Andrea Lancichinetti and Santo Fortunato. In particular, this program is to produce binary networks with overlapping nodes. 
 Each feedback is very welcome. If you have found a bug or have problems, or want to give advises, please contact us:
 
-andrea.lancichinetti@isi.it
-fortunato@isi.it
+arg.lanci@gmail.com
+santo.fortunato@gmail.com
 
 
 Turin, 29 October 2009
