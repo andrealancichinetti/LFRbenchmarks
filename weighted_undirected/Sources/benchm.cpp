@@ -345,7 +345,8 @@ int check_weights(deque<map <int, double > > & neigh_weigh, const deque<deque<in
 
 
 int propagate(deque<map <int, double > > & neigh_weigh, const deque<deque<int> > & member_list, 
-	deque<deque<double> > & wished, deque<deque<double> > & factual, int i, double & tot_var, double *strs, const deque<int> & internal_kin_top) {
+	deque<deque<double> > & wished, deque<deque<double> > & factual, int i, double & tot_var,
+	const deque<int> & internal_kin_top) {
 	
 	
 	
@@ -438,7 +439,6 @@ int propagate(deque<map <int, double > > & neigh_weigh, const deque<deque<int> >
 		
 		double oldpartvar=0;
 		for(map<int, double>::iterator itm=neigh_weigh[i].begin(); itm!=neigh_weigh[i].end(); itm++) {
-				
 			
 			if(they_are_mate(i, itm->first, member_list)) {
 				
@@ -477,7 +477,6 @@ int propagate(deque<map <int, double > > & neigh_weigh, const deque<deque<int> >
 				
 				double change = changenn/internal_neigh;
 
-				
 				if(itm->second - change > 0) {
 					
 					factual[itm->first][0]-=change;
@@ -492,8 +491,6 @@ int propagate(deque<map <int, double > > & neigh_weigh, const deque<deque<int> >
 					
 					itm->second-= change;
 					neigh_weigh[itm->first][i]-=change;
-
-
 				
 				}
 					
@@ -512,15 +509,12 @@ int propagate(deque<map <int, double > > & neigh_weigh, const deque<deque<int> >
 					factual[i][1]+=change;
 					factual[i][2]-=change;
 					
-					for (int bw=0; bw<3; bw++)
+					for (int bw=0; bw<3; bw++) {
 						newpartvar+= (factual[itm->first][bw] - wished[itm->first][bw]) * (factual[itm->first][bw] - wished[itm->first][bw]);
-					
+					}
 					
 					itm->second+= change;
 					neigh_weigh[itm->first][i]+=change;
-
-
-					
 				}
 					
 			}
@@ -531,24 +525,14 @@ int propagate(deque<map <int, double > > & neigh_weigh, const deque<deque<int> >
 		
 	
 	
-		for (int bw=0; bw<3; bw++)
+		for (int bw=0; bw<3; bw++) {
 			newpartvar+= (factual[i][bw] - wished[i][bw]) * (factual[i][bw] - wished[i][bw]);
-		
+		}
 		
 		tot_var+=newpartvar - oldpartvar;
-			
 		
-				
-
-	
-	
-	
 	}
-	
-	
-	//check_weights(neigh_weigh, member_list, wished, factual, tot_var, strs);
-	
-	
+		
 	return 0;
 	
 }
@@ -562,12 +546,12 @@ int weights(deque<set<int> > & en, const deque<deque<int> > & member_list, const
 	double tstrength=0;
 	
 	
-	for(int i=0; i<en.size(); i++)
+	for(int i=0; i<en.size(); i++) {
 		tstrength+=pow(en[i].size(), beta);
-		
+	}
 	
-	
-	double strs[en.size()]; // strength of the nodes
+	// strength of the nodes
+	vector<double> strs(en.size());
 	// build a matrix like this: deque < map <int, double > > each row corresponds to link - weights 
 
 	
@@ -647,9 +631,9 @@ int weights(deque<set<int> > & en, const deque<deque<int> > & member_list, const
 		double pre_var=tot_var;
 		
 		
-		for (int i=0; i<en.size(); i++) 
-			propagate(neigh_weigh, member_list, wished, factual, i, tot_var, strs, internal_kin_top);
-		
+		for (int i=0; i<en.size(); i++) {
+			propagate(neigh_weigh, member_list, wished, factual, i, tot_var, internal_kin_top);
+		}
 		
 		//check_weights(neigh_weigh, member_list, wished, factual, tot_var, strs);
 		
